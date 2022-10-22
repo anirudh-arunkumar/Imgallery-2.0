@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Photo Gallery</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,700,500,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/et-line/et-line.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/themify/themify.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/global.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+    <link href="/assets/css/cards-gallery.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/assets/plugins/jquery.min.js"></script>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+
+<body>
+    <!-- WRAPPER -->
+    <div class="wrapper">
+        <!--========== PAGE CONTENT ==========-->
+        <div class="bg-color-sky-light">
+            <br>
+            <center>
+                <h2>Photo Gallery</h2>
+                <br> <a href="/">Home</a> | <a href="/createAlbum">Create Album</a>
+                <br>
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="blog-grid-content">
+                                <form method='get' action="/album/search">
+                                    <input type="text" name="query" id="query" class="form-control" placeholder="Search photos"> </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br> Showing search results for "{{searchquery}}" </center>
+            <section class="gallery-block cards-gallery">
+                <div class="container">
+                    <div class="row" style="justify-content: center;"> 
+                        {% for p in albums %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card border-0 transform-on-hover">
+                                <a class="lightbox" href="/album/{{p.albumID}}"> <img src="{{p.thumbnailURL}}" alt="Card Image" class="card-img-top"> </a>
+                                <div class="card-body">
+                                    <h6><a href="/album/{{p.albumID}}">{{p.name}}</a></h6>
+                                    <p class="text-muted card-text">{{p.description}}</p>
+                                </div>
+                            </div>
+                        </div> 
+                        {% endfor %} 
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!--========== END PAGE CONTENT ==========-->
+    </div>
+    <!-- END WRAPPER -->
+    <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/app.js"></script>
+    <script type="text/javascript" src="/assets/scripts/portfolio/portfolio-4-col-grid.js"></script>
+</body>
+<!-- END BODY -->
+
+</html>
